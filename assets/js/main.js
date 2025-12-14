@@ -4,3 +4,7 @@ const nav = document.querySelector('.nav');
 menuToggle.addEventListener('click', () => {
   nav.classList.toggle('active');
 });
+window.addEventListener('load', () => {
+  const heroContent = document.querySelector('.hero-content');
+  heroContent.classList.add('show');
+});

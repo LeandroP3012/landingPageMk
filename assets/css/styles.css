@@ -18,18 +18,15 @@ body {
 }
 
 /* ================= HEADER ================= */
-
 .site-header {
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
-  background: rgba(10,10,10,0.75);
-  backdrop-filter: blur(10px);
 }
 
 .header-container {
-  max-width: 1200px;
+  max-width: 1700px;
   margin: auto;
   padding: 20px;
   display: flex;
@@ -70,8 +67,7 @@ body {
   border-radius: 30px;
 }
 
-/* ================= MENU MOBILE ================= */
-
+/* ================= MENU MOBILE (Parte 1) ================= */
 .menu-toggle {
   display: none;
   flex-direction: column;
@@ -85,33 +81,7 @@ body {
   background: var(--white);
 }
 
-/* ================= RESPONSIVE ================= */
-
-@media (max-width: 768px) {
-  .nav {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    height: 100vh;
-    width: 70%;
-    background: var(--black);
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 40px;
-    transition: .3s;
-  }
-
-  .nav.active {
-    right: 0;
-  }
-
-  .menu-toggle {
-    display: flex;
-  }
-}
 /* ================= FOOTER ================= */
-
 .site-footer {
   background: var(--black);
   color: var(--white);
@@ -143,4 +113,103 @@ body {
   margin-top: 40px;
   font-size: 14px;
   color: var(--gray);
+}
+
+/* ================= HERO ================= */
+.hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.hero-bg img,
+.hero-bg video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+  padding: 0 20px;
+  /* Animación por defecto */
+  opacity: 0;
+  transform: translate(-50%, -40%);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.hero-content.show {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+
+.hero-content h2 {
+    font-family: 'Source Serif 4', Georgia, Times New Roman, serif;
+    font-size: 14em; /* TAMAÑO EN PC (POR DEFECTO) */
+    line-height: 0.9em;
+    text-align: center;
+}
+
+.hero-content p {
+  font-size: 18px;
+  opacity: .9;
+  margin-bottom: 30px;
+}
+
+.btn-hero {
+  display: inline-block;
+  padding: 14px 34px;
+  border-radius: 40px;
+  border: 1px solid var(--accent);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: .3s;
+}
+
+.btn-hero:hover {
+  background: var(--accent);
+  color: #000;
+}
+
+/* ================= RESPONSIVE (Media Queries) ================= */
+
+@media (max-width: 768px) {
+  .nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 70%;
+    background: var(--black);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    transition: .3s;
+  }
+
+  .nav.active {
+    right: 0;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  /* REGLA APLICADA SOLO EN MÓVILES (768px o menos) */
+  .hero-content h2 {
+    font-size: 5em; /* TAMAÑO EN MÓVILES */
+  }
 }
