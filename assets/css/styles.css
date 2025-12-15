@@ -183,6 +183,243 @@ body {
   color: #000;
 }
 
+/* ================= CLIENTES ================= */
+
+.clients {
+  padding: 140px 20px;
+  background: #fff;
+}
+
+.clients-container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.clients-intro {
+  max-width: 600px;
+  margin-bottom: 80px;
+}
+
+.clients-label {
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: #888;
+  margin-bottom: 20px;
+}
+
+.clients-intro h2 {
+  font-size: clamp(30px, 4vw, 48px);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.clients-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 70px;
+  align-items: center;
+}
+
+/* tamaños editoriales */
+.clients-grid img:nth-child(3n) {
+  transform: scale(1.15);
+}
+
+.clients-grid img {
+  width: 100%;
+  max-width: 160px;
+  filter: grayscale(100%);
+  opacity: 0.4;
+  transition: all 0.4s ease;
+}
+
+.clients-grid img:hover {
+  filter: grayscale(0);
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+/* responsive */
+@media (max-width: 992px) {
+  .clients-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+  }
+}
+
+@media (max-width: 600px) {
+  .clients-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+}
+.clients-cta {
+  margin-top: 60px;
+}
+
+.clients-cta a {
+  font-size: 16px;
+  color: #000;
+  text-decoration: none;
+  border-bottom: 1px solid #000;
+  padding-bottom: 4px;
+  transition: opacity .3s;
+}
+
+.clients-cta a:hover {
+  opacity: .6;
+}
+.clients-cta {
+  margin-top: 60px;
+}
+
+.clients-cta a {
+  font-size: 16px;
+  color: #000;
+  text-decoration: none;
+  border-bottom: 1px solid #000;
+  padding-bottom: 4px;
+  transition: opacity .3s;
+}
+
+.clients-cta a:hover {
+  opacity: .6;
+}
+
+
+/* ================= MARQUEE ================= */
+
+.marquee-section {
+  background: #0a0a0a;
+  padding: 24px 0;
+  overflow: hidden;
+}
+
+.marquee {
+  width: 100%;
+  overflow: hidden;
+}
+
+.marquee-track {
+  display: flex;
+  gap: 60px;
+  width: max-content;
+  animation: marquee 25s linear infinite;
+}
+
+.marquee-track span {
+  color: #fff;
+  font-size: 15px;
+  white-space: nowrap;
+  opacity: 0.9;
+}
+
+/* animación */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .marquee-track {
+    gap: 40px;
+  }
+
+  .marquee-track span {
+    font-size: 14px;
+  }
+}
+
+/* ================= TEAM / STUDIO ================= */
+
+.team {
+  padding: 160px 20px;
+  background: #fff;
+}
+
+.team-container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.team-intro {
+  max-width: 700px;
+  margin-bottom: 100px;
+}
+
+.team-label {
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: #888;
+  margin-bottom: 20px;
+}
+
+.team-intro h2 {
+  font-size: clamp(32px, 4vw, 52px);
+  line-height: 1.1;
+  font-weight: 600;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}
+
+/* miembro */
+.team-member {
+  cursor: pointer;
+}
+
+.team-photo {
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.team-photo img {
+  width: 100%;
+  display: block;
+  transition: transform .6s ease;
+}
+
+.team-info {
+  margin-top: 20px;
+}
+
+.team-info h3 {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.team-info p {
+  font-size: 14px;
+  color: #777;
+}
+
+/* hover */
+.team-member:hover img {
+  transform: scale(1.08);
+}
+
+/* responsive */
+@media (max-width: 1024px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
 /* ================= RESPONSIVE (Media Queries) ================= */
 
 @media (max-width: 768px) {
@@ -213,3 +450,4 @@ body {
     font-size: 5em; /* TAMAÑO EN MÓVILES */
   }
 }
+
