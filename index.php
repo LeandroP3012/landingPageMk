@@ -13,5 +13,7 @@ require_once __DIR__ . '/app/config/app.php';
 <?php include 'components/hero.php'; ?>
 <?php include 'components/marquee.php'; ?>
 <?php include 'components/clients.php'; ?>
+<?php include 'components/logo-slider.php'; ?>
 <?php include 'components/team.php'; ?>
 <?php include 'components/footer.php'; ?>
+
