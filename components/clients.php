@@ -1,29 +1,35 @@
+<?php
+require_once __DIR__ . '/../app/config/app.php';
+
+require_once __DIR__ . '/../app/config/database.php';
+require_once __DIR__ . '/../app/models/Client.php';
+
+$clientModel = new Client($pdo);
+$clients = $clientModel->all();
+?>
+
 <section class="clients" id="clientes">
 
   <div class="clients-container">
 
-    <!-- Texto editorial -->
     <div class="clients-intro">
       <p class="clients-label">CLIENTES</p>
       <h2>Trabajamos con marcas que buscan crecer de verdad</h2>
     </div>
 
-    <!-- Grid editorial -->
     <div class="clients-grid">
-      <img src="assets/img/cliente1.jpg" alt="Cliente" id="Clientes">
-      <img src="assets/img/client2.png" alt="Cliente">
-      <img src="assets/img/client3.png" alt="Cliente">
-      <img src="assets/img/client4.png" alt="Cliente">
-      <img src="assets/img/client5.png" alt="Cliente">
-      <img src="assets/img/client6.png" alt="Cliente">
-      <img src="assets/img/client7.png" alt="Cliente">
-      <img src="assets/img/client8.png" alt="Cliente">
+      <?php foreach ($clients as $client): ?>
+        <a href="<?= BASE_URL ?>/clientes/index.php?slug=<?= urlencode($client['slug']) ?>">
+          <img src="<?= BASE_URL ?>/storage/uploads/clients/<?= htmlspecialchars($client['logo']) ?>"
+            alt="<?= htmlspecialchars($client['name']) ?>">
+        </a>
+      <?php endforeach; ?>
     </div>
+
     <div class="clients-divider">
-      <p>
-        Branding · Estrategia · Diseño · Comunicación · Contenido
-      </p>
+      <p>Branding · Estrategia · Diseño · Comunicación · Contenido</p>
     </div>
+
     <div class="clients-cta">
       <a href="#contacto">Ver cómo trabajamos →</a>
     </div>
