@@ -10,7 +10,7 @@
 
     <!-- Grid editorial -->
     <div class="clients-grid">
-      <img src="assets/img/cliente1.jpg" alt="Cliente">
+      <img src="assets/img/cliente1.jpg" alt="Cliente" id="Clientes">
       <img src="assets/img/client2.png" alt="Cliente">
       <img src="assets/img/client3.png" alt="Cliente">
       <img src="assets/img/client4.png" alt="Cliente">

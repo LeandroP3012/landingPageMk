@@ -19,6 +19,7 @@
   </div>
 </footer>
 
-<script src="assets/js/main.js"></script>
+<script src="/landingPageMk/assets/js/main.js"></script>
 </body>
+
 </html>

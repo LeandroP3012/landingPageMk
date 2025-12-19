@@ -16,8 +16,8 @@
           <img src="assets/img/team1.jpg" alt="Director Creativo">
         </div>
         <div class="team-info">
-          <h3>Junior Reyes</h3>
-          <p>Director Creativo</p>
+          <h3>Junior</h3>
+          <p>Director</p>
         </div>
       </article>
 
@@ -26,8 +26,8 @@
           <img src="assets/img/team2.jpg" alt="Brand Strategist">
         </div>
         <div class="team-info">
-          <h3>Leandreo Pando</h3>
-          <p>Panadero mecanico</p>
+          <h3>Leandro</h3>
+          <p>QA</p>
         </div>
       </article>
 
@@ -36,8 +36,8 @@
           <img src="assets/img/team3.jpg" alt="Diseño">
         </div>
         <div class="team-info">
-          <h3>bichi bailarin</h3>
-          <p>Catador de gampis</p>
+          <h3>Johan</h3>
+          <p>Desgustador</p>
         </div>
       </article>
 
@@ -46,7 +46,7 @@
           <img src="assets/img/team4.jpg" alt="Contenido">
         </div>
         <div class="team-info">
-          <h3>Marcos Japelos</h3>
+          <h3>Marcos</h3>
           <p>Contenido & Social</p>
         </div>
       </article>
