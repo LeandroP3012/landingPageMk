@@ -1,58 +1,60 @@
-<section class="team" id="equipo">
+<?php
+require_once 'app/config/database.php';
+require_once 'app/models/Team.php';
+require_once 'app/models/TeamCover.php';
 
+$teamModel = new Team($pdo);
+$team = $teamModel->all();
+
+$coverModel = new TeamCover($pdo);
+$cover = $coverModel->get();
+?>
+
+<section class="team" id="equipo">
   <div class="team-container">
 
-    <!-- Intro editorial -->
     <div class="team-intro">
       <p class="team-label">STUDIO</p>
       <h2>Un equipo multidisciplinario<br>obsesionado con las ideas</h2>
     </div>
 
-    <!-- Grid equipo -->
+    <?php if ($cover && ($cover['image_top'] || $cover['image_bottom'])): ?>
+      <div class="team-cover" id="teamSlider">
+        <div class="team-cover-inner">
+
+          <!-- Imagen inferior -->
+          <?php if (!empty($cover['image_bottom'])): ?>
+            <img src="<?= BASE_URL ?>/storage/uploads/team/<?= $cover['image_bottom'] ?>" class="cover-image"
+              alt="Equipo – imagen base">
+          <?php endif; ?>
+
+          <!-- Imagen superior -->
+          <?php if (!empty($cover['image_top'])): ?>
+            <div class="cover-top" id="coverTop">
+              <img src="<?= BASE_URL ?>/storage/uploads/team/<?= $cover['image_top'] ?>" alt="Equipo – imagen superior">
+            </div>
+          <?php endif; ?>
+
+          <div class="cover-divider" id="coverDivider"></div>
+
+        </div>
+      </div>
+    <?php endif; ?>
+
     <div class="team-grid">
-
-      <article class="team-member">
-        <div class="team-photo">
-          <img src="assets/img/team1.jpg" alt="Director Creativo">
-        </div>
-        <div class="team-info">
-          <h3>Junior</h3>
-          <p>Director</p>
-        </div>
-      </article>
-
-      <article class="team-member">
-        <div class="team-photo">
-          <img src="assets/img/team2.jpg" alt="Brand Strategist">
-        </div>
-        <div class="team-info">
-          <h3>Leandro</h3>
-          <p>QA</p>
-        </div>
-      </article>
-
-      <article class="team-member">
-        <div class="team-photo">
-          <img src="assets/img/team3.jpg" alt="Diseño">
-        </div>
-        <div class="team-info">
-          <h3>Johan</h3>
-          <p>Desgustador</p>
-        </div>
-      </article>
-
-      <article class="team-member">
-        <div class="team-photo">
-          <img src="assets/img/team4.jpg" alt="Contenido">
-        </div>
-        <div class="team-info">
-          <h3>Marcos</h3>
-          <p>Contenido & Social</p>
-        </div>
-      </article>
-
+      <?php foreach ($team as $member): ?>
+        <article class="team-member">
+          <div class="team-photo">
+            <img src="<?= BASE_URL ?>/storage/uploads/team/<?= $member['photo'] ?>"
+              alt="<?= htmlspecialchars($member['name']) ?>">
+          </div>
+          <div class="team-info">
+            <h3><?= htmlspecialchars($member['name']) ?></h3>
+            <p><?= htmlspecialchars($member['role']) ?></p>
+          </div>
+        </article>
+      <?php endforeach; ?>
     </div>
 
   </div>
-
 </section>
