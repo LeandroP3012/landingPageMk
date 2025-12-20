@@ -26,6 +26,7 @@ $clients = $clientModel->all();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clientes - Panel de Administración</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/admin/assets/css/components.css">
     <style>
         * {
             margin: 0;
@@ -37,12 +38,12 @@ $clients = $clientModel->all();
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #000000ff;
             min-height: 100vh;
-            padding: 20px;
+            padding: 0;
         }
 
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
+            width: 100%;
+            padding: 20px;
         }
 
         .header {
@@ -277,69 +278,75 @@ $clients = $clientModel->all();
 </head>
 
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>
-                <i class="fas fa-users"></i>
-                Gestión de Clientes
-            </h1>
-            <a href="create.php" class="btn">
-                <i class="fas fa-plus-circle"></i>
-                Agregar Cliente
-            </a>
-        </div>
+    <?php include __DIR__ . '/../components/sidebar.php'; ?>
 
-        <div class="content">
-            <div class="stats">
-                <div class="stat-card">
-                    <h3>Total de Clientes</h3>
-                    <div class="number"><?= count($clients) ?></div>
+    <div class="main-content">
+        <div class="container">
+            <div class="header">
+                <h1>
+                    <i class="fas fa-users"></i>
+                    Gestión de Clientes
+                </h1>
+                <a href="create.php" class="btn">
+                    <i class="fas fa-plus-circle"></i>
+                    Agregar Cliente
+                </a>
+            </div>
+
+            <div class="content">
+                <div class="stats">
+                    <div class="stat-card">
+                        <h3>Total de Clientes</h3>
+                        <div class="number"><?= count($clients) ?></div>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <?php if (count($clients) > 0): ?>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th><i class="fas fa-hashtag"></i> ID</th>
+                                    <th><i class="fas fa-building"></i> Nombre</th>
+                                    <th><i class="fas fa-link"></i> Slug</th>
+                                    <th><i class="fas fa-cog"></i> Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($clients as $client): ?>
+                                    <tr>
+                                        <td><span class="id-badge">#<?= $client['id'] ?></span></td>
+                                        <td><span class="client-name"><?= htmlspecialchars($client['name']) ?></span></td>
+                                        <td><span class="slug"><?= htmlspecialchars($client['slug']) ?></span></td>
+                                        <td>
+                                            <div class="actions">
+                                                <a href="view.php?id=<?= $client['id'] ?>" class="action-btn btn-view">
+                                                    <i class="fas fa-eye"></i> Ver
+                                                </a>
+                                                <a href="edit.php?id=<?= $client['id'] ?>" class="action-btn btn-edit">
+                                                    <i class="fas fa-edit"></i> Editar
+                                                </a>
+                                                <a href="delete.php?id=<?= $client['id'] ?>" class="action-btn btn-delete" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')">
+                                                    <i class="fas fa-trash"></i> Eliminar
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    <?php else: ?>
+                        <div class="empty-state">
+                            <i class="fas fa-inbox"></i>
+                            <h3>No hay clientes registrados</h3>
+                            <p>Comienza agregando tu primer cliente usando el botón de arriba</p>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
-
-            <div class="table-container">
-                <?php if (count($clients) > 0): ?>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th><i class="fas fa-hashtag"></i> ID</th>
-                                <th><i class="fas fa-building"></i> Nombre</th>
-                                <th><i class="fas fa-link"></i> Slug</th>
-                                <th><i class="fas fa-cog"></i> Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($clients as $client): ?>
-                                <tr>
-                                    <td><span class="id-badge">#<?= $client['id'] ?></span></td>
-                                    <td><span class="client-name"><?= htmlspecialchars($client['name']) ?></span></td>
-                                    <td><span class="slug"><?= htmlspecialchars($client['slug']) ?></span></td>
-                                    <td>
-                                        <div class="actions">
-                                            <a href="view.php?id=<?= $client['id'] ?>" class="action-btn btn-view">
-                                                <i class="fas fa-eye"></i> Ver
-                                            </a>
-                                            <a href="edit.php?id=<?= $client['id'] ?>" class="action-btn btn-edit">
-                                                <i class="fas fa-edit"></i> Editar
-                                            </a>
-                                            <a href="delete.php?id=<?= $client['id'] ?>" class="action-btn btn-delete" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')">
-                                                <i class="fas fa-trash"></i> Eliminar
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
-                <?php else: ?>
-                    <div class="empty-state">
-                        <i class="fas fa-inbox"></i>
-                        <h3>No hay clientes registrados</h3>
-                        <p>Comienza agregando tu primer cliente usando el botón de arriba</p>
-                    </div>
-                <?php endif; ?>
-            </div>
         </div>
+
+        <?php include __DIR__ . '/../components/footer.php'; ?>
     </div>
 </body>
 
