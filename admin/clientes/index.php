@@ -27,6 +27,7 @@ $clients = $clientModel->all();
     <title>Clientes - Panel de Administración</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/admin/assets/css/components.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/admin/assets/css/confirm-modal.css">
     <style>
         * {
             margin: 0;
@@ -326,7 +327,7 @@ $clients = $clientModel->all();
                                                 <a href="edit.php?id=<?= $client['id'] ?>" class="action-btn btn-edit">
                                                     <i class="fas fa-edit"></i> Editar
                                                 </a>
-                                                <a href="delete.php?id=<?= $client['id'] ?>" class="action-btn btn-delete" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')">
+                                                <a href="delete.php?id=<?= $client['id'] ?>" class="action-btn btn-delete" data-confirm-delete data-confirm-title="¿Eliminar cliente?" data-confirm-message="Esta acción eliminará permanentemente el cliente y toda su información asociada.">
                                                     <i class="fas fa-trash"></i> Eliminar
                                                 </a>
                                             </div>
@@ -348,6 +349,8 @@ $clients = $clientModel->all();
 
         <?php include __DIR__ . '/../components/footer.php'; ?>
     </div>
+
+    <script src="<?= BASE_URL ?>/admin/assets/js/confirm-modal.js"></script>
 </body>
 
 </html>
