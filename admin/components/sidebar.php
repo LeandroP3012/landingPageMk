@@ -70,7 +70,7 @@ $current_dir = basename(dirname($_SERVER['PHP_SELF']));
         <div class="user-role">Super Admin</div>
       </div>
     </div>
-    <a href="<?= BASE_URL ?>/admin/logout.php" class="logout-btn">
+    <a href="<?= BASE_URL ?>/admin/login.php" class="logout-btn">
       <i class="fas fa-sign-out-alt"></i>
       <span>Cerrar Sesión</span>
     </a>
