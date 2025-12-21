@@ -34,8 +34,8 @@ class ClientLogo
     public function create(
         int $clientId,
         string $logo,
-        int $width = 80,
-        int $height = 40,
+        int $width = 100,
+        int $height = 90,
         int $sortOrder = 0
     ): bool {
         $stmt = $this->db->prepare("

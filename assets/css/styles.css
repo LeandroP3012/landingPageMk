@@ -763,7 +763,7 @@ body {
   align-items: center;
   gap: 5rem;
   width: max-content;
-  animation: marquee 25s linear infinite;
+  /* Animación controlada por JavaScript */
 }
 
 #logo-slider .logo-item {
@@ -775,24 +775,18 @@ body {
 }
 
 #logo-slider img {
-  filter: brightness(0) invert(1);
-  opacity: 0.8;
-  transition: opacity 0.3s ease;
+  opacity: 1;
+  transition: all 0.3s ease;
   max-height: 3.5rem;
 }
 
 #logo-slider img:hover {
-  opacity: 1;
-}
-
-#logo-slider:hover .marquee-track {
-  animation-play-state: paused;
+  transform: scale(1.1);
 }
 
 @media (max-width: 768px) {
   #logo-slider .marquee-track {
     gap: 3rem;
-    animation: marquee 20s linear infinite;
   }
 
   #logo-slider img {
