@@ -12,28 +12,47 @@ $clients = $clientModel->all();
 
   <div class="clients-container">
 
-    <div class="clients-intro">
-      <p class="clients-label">CLIENTES</p>
-      <h2>Trabajamos con marcas que buscan crecer de verdad</h2>
+    <!-- Tabs de filtrado -->
+    <div class="clients-tabs">
+      <button class="tab-btn active" data-tab="ultimos">Últimos</button>
+      <button class="tab-btn" data-tab="servicios">Servicios</button>
+      <button class="tab-btn" data-tab="industrias">Industrias</button>
     </div>
 
-    <div class="clients-grid">
+    <!-- Grid de proyectos -->
+    <div class="clients-grid" id="clients-grid">
       <?php foreach ($clients as $client): ?>
-        <a href="<?= BASE_URL ?>/clientes/index.php?slug=<?= urlencode($client['slug']) ?>">
-          <img src="<?= BASE_URL ?>/storage/uploads/clients/<?= htmlspecialchars($client['logo']) ?>"
-            alt="<?= htmlspecialchars($client['name']) ?>">
+        <a href="<?= BASE_URL ?>/clientes/index.php?slug=<?= urlencode($client['slug']) ?>" class="client-card">
+          <div class="client-card-image">
+            <img src="<?= BASE_URL ?>/storage/uploads/clients/<?= htmlspecialchars($client['logo']) ?>" alt="<?= htmlspecialchars($client['name']) ?>">
+            <div class="client-card-overlay"></div>
+          </div>
+          <div class="client-card-info">
+            <h3><?= htmlspecialchars($client['name']) ?></h3>
+            <p><?= htmlspecialchars($client['short_description'] ?? 'Proyecto de Marca') ?></p>
+          </div>
         </a>
       <?php endforeach; ?>
-    </div>
-
-    <div class="clients-divider">
-      <p>Branding · Estrategia · Diseño · Comunicación · Contenido</p>
-    </div>
-
-    <div class="clients-cta">
-      <a href="#contacto">Ver cómo trabajamos →</a>
     </div>
 
   </div>
 
 </section>
+
+<script>
+  // Funcionalidad de tabs (por ahora solo visual, sin filtrado real)
+  ( function () {
+    const tabBtns = document.querySelectorAll( '.tab-btn' );
+
+    tabBtns.forEach( btn => {
+      btn.addEventListener( 'click', function () {
+        // Remover active de todos
+        tabBtns.forEach( b => b.classList.remove( 'active' ) );
+        // Agregar active al clickeado
+        this.classList.add( 'active' );
+
+        // Aquí se podría agregar lógica de filtrado real cuando se tengan las columnas en la BD
+      } );
+    } );
+  } )();
+</script>
