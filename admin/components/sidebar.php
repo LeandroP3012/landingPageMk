@@ -32,6 +32,13 @@ $current_dir = basename(dirname($_SERVER['PHP_SELF']));
         </a>
       </li>
 
+      <li class="nav-item">
+        <a href="<?= BASE_URL ?>/admin/team/index.php" class="nav-link <?= ($current_dir == 'team') ? 'active' : '' ?>">
+          <i class="fas fa-user-friends"></i>
+          <span>Gestión de Equipo</span>
+        </a>
+      </li>
+
       <!-- Aquí puedes agregar más opciones en el futuro -->
       <!--
             <li class="nav-item">
