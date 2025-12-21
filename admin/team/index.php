@@ -296,7 +296,8 @@ $current_dir = basename(dirname($_SERVER['PHP_SELF']));
                 <?php foreach ($team as $member): ?>
                     <div class="team-card">
                         <?php if (!empty($member['photo'])): ?>
-                            <img src="<?= BASE_URL ?>/storage/uploads/team/<?= htmlspecialchars($member['photo']) ?>" alt="<?= htmlspecialchars($member['name']) ?>" class="member-photo">
+                            <img src="<?= BASE_URL ?>/storage/uploads/team/<?= htmlspecialchars($member['photo']) ?>"
+                                alt="<?= htmlspecialchars($member['name']) ?>" class="member-photo">
                         <?php else: ?>
                             <div class="member-photo-placeholder">
                                 <i class="fas fa-user"></i>
@@ -311,7 +312,10 @@ $current_dir = basename(dirname($_SERVER['PHP_SELF']));
                             <a href="edit.php?id=<?= $member['id'] ?>" class="btn-icon edit" title="Editar">
                                 <i class="fas fa-edit"></i>
                             </a>
-                            <a href="delete.php?id=<?= $member['id'] ?>" class="btn-icon delete" data-confirm-delete data-confirm-title="Eliminar Miembro" data-confirm-message="¿Estás seguro de eliminar a <?= htmlspecialchars($member['name']) ?>?" title="Eliminar">
+                            <a href="delete.php?id=<?= $member['id'] ?>" class="btn-icon delete" data-confirm-delete
+                                data-confirm-title="Eliminar Miembro"
+                                data-confirm-message="¿Estás seguro de eliminar a <?= htmlspecialchars($member['name']) ?>?"
+                                title="Eliminar">
                                 <i class="fas fa-trash"></i>
                             </a>
                         </div>

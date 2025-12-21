@@ -5,6 +5,8 @@ require_once __DIR__ . '/../../app/config/database.php';
 
 // Modelos
 require_once ROOT_PATH . '/app/models/Client.php';
+require_once __DIR__ . '/../../app/models/ClientLogo.php';
+
 
 session_start();
 if (!isset($_SESSION['admin_logged'])) {
@@ -292,6 +294,7 @@ $clients = $clientModel->all();
                     <i class="fas fa-plus-circle"></i>
                     Agregar Cliente
                 </a>
+
             </div>
 
             <div class="content">
@@ -324,13 +327,23 @@ $clients = $clientModel->all();
                                                 <a href="view.php?id=<?= $client['id'] ?>" class="action-btn btn-view">
                                                     <i class="fas fa-eye"></i> Ver
                                                 </a>
+
                                                 <a href="edit.php?id=<?= $client['id'] ?>" class="action-btn btn-edit">
                                                     <i class="fas fa-edit"></i> Editar
                                                 </a>
-                                                <a href="delete.php?id=<?= $client['id'] ?>" class="action-btn btn-delete" data-confirm-delete data-confirm-title="¿Eliminar cliente?" data-confirm-message="Esta acción eliminará permanentemente el cliente y toda su información asociada.">
+
+                                                <a href="logos.php?client_id=<?= $client['id'] ?>" class="action-btn btn-view">
+                                                    <i class="fas fa-images"></i> Logos
+                                                </a>
+
+
+                                                <a href="delete.php?id=<?= $client['id'] ?>" class="action-btn btn-delete"
+                                                    data-confirm-delete data-confirm-title="¿Eliminar cliente?"
+                                                    data-confirm-message="Esta acción eliminará permanentemente el cliente.">
                                                     <i class="fas fa-trash"></i> Eliminar
                                                 </a>
                                             </div>
+
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
