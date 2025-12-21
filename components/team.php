@@ -13,9 +13,12 @@ $cover = $coverModel->get();
 <section class="team" id="equipo">
   <div class="team-container">
 
-    <div class="team-intro">
-      <p class="team-label">STUDIO</p>
-      <h2>Un equipo multidisciplinario<br>obsesionado con las ideas</h2>
+    <div class="team-header">
+      <div class="team-category">
+        <span class="category-top">Gestión</span>
+        <span class="category-bottom">& Dirección</span>
+      </div>
+      <h1 class="team-main-title">HUB (NOSOTROS)</h1>
     </div>
 
     <?php if ($cover && ($cover['image_top'] || $cover['image_bottom'])): ?>
@@ -24,8 +27,7 @@ $cover = $coverModel->get();
 
           <!-- Imagen inferior -->
           <?php if (!empty($cover['image_bottom'])): ?>
-            <img src="<?= BASE_URL ?>/storage/uploads/team/<?= $cover['image_bottom'] ?>" class="cover-image"
-              alt="Equipo – imagen base">
+            <img src="<?= BASE_URL ?>/storage/uploads/team/<?= $cover['image_bottom'] ?>" class="cover-image" alt="Equipo – imagen base">
           <?php endif; ?>
 
           <!-- Imagen superior -->
@@ -41,19 +43,31 @@ $cover = $coverModel->get();
       </div>
     <?php endif; ?>
 
-    <div class="team-grid">
-      <?php foreach ($team as $member): ?>
-        <article class="team-member">
-          <div class="team-photo">
-            <img src="<?= BASE_URL ?>/storage/uploads/team/<?= $member['photo'] ?>"
-              alt="<?= htmlspecialchars($member['name']) ?>">
-          </div>
-          <div class="team-info">
-            <h3><?= htmlspecialchars($member['name']) ?></h3>
-            <p><?= htmlspecialchars($member['role']) ?></p>
-          </div>
-        </article>
-      <?php endforeach; ?>
+    <div class="team-content">
+      <div class="team-brand">
+        <h2 class="brand-title">Equipo</h2>
+      </div>
+
+      <div class="team-grid">
+        <?php foreach ($team as $member): ?>
+          <article class="team-member">
+            <div class="team-photo">
+              <img src="<?= BASE_URL ?>/storage/uploads/team/<?= $member['photo'] ?>" alt="<?= htmlspecialchars($member['name']) ?>">
+            </div>
+            <div class="team-info">
+              <h3><?= htmlspecialchars($member['name']) ?></h3>
+              <p><?= htmlspecialchars($member['role']) ?></p>
+            </div>
+          </article>
+        <?php endforeach; ?>
+      </div>
+    </div>
+
+    <div class="team-footer">
+      <div class="team-category">
+        <span class="category-top">HUB</span>
+        <span class="category-bottom">Creativo</span>
+      </div>
     </div>
 
   </div>
