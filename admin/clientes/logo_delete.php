@@ -14,5 +14,5 @@ $clientId = (int) $_GET['client_id'];
 $model = new ClientLogo($pdo);
 $model->delete($id);
 
-$clientId = $_GET['client_id'] ?? null;
+header("Location: logos.php?client_id=$clientId");
 exit;

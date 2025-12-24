@@ -11,7 +11,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Playfair Display', Georgia, serif;
 }
 
 body {
@@ -120,7 +120,7 @@ body {
 }
 
 .footer-title {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: 48px;
   font-weight: 700;
   line-height: 1.3;
@@ -162,7 +162,7 @@ body {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
   border: none;
   cursor: pointer;
-  font-family: 'Inter', -apple-system, sans-serif;
+  font-family: 'Playfair Display', Georgia, serif;
   position: relative;
   overflow: hidden;
   margin-bottom: 30px;
@@ -310,7 +310,7 @@ body {
 }
 
 .hero-content h2 {
-  font-family: 'Source Serif 4', Georgia, Times New Roman, serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: 10em;
   /* TAMAÑO EN PC (POR DEFECTO) */
   line-height: 0.9em;
@@ -601,7 +601,7 @@ body {
 .team-category {
   display: flex;
   flex-direction: column;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -610,7 +610,7 @@ body {
 }
 
 .team-main-title {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: 16px;
   font-weight: 600;
   text-transform: uppercase;
@@ -695,7 +695,7 @@ body {
 }
 
 .brand-title {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: 64px;
   font-weight: 700;
   line-height: 0.9;
@@ -745,7 +745,7 @@ body {
 }
 
 .team-info h3 {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: 16px;
   font-weight: 600;
   margin: 0 0 4px 0;
@@ -753,7 +753,7 @@ body {
 }
 
 .team-info p {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: 13px;
   color: #666;
   margin: 0;
@@ -880,8 +880,8 @@ body {
 /* ================= IMPACT SECTION ================= */
 
 .impact-section {
-  background: #f5ebe0;
-  color: #1f1f1f;
+  background: #000000;
+  color: #ffffff;
   padding: 120px 20px;
 }
 
@@ -899,14 +899,14 @@ body {
   font-weight: 400;
   line-height: 1.15;
   margin: 0 0 16px;
-  color: #1a1a1a;
+  color: #ffffff;
 }
 
 .impact-paragraph {
   font-size: 19px;
   line-height: 1.8;
   margin: 0;
-  color: #3d3d3d;
+  color: #cccccc;
 }
 
 .impact-highlight {

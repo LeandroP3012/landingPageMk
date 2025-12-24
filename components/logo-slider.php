@@ -7,7 +7,7 @@ $logos = $logoModel->all();
 ?>
 
 
-<section id="logo-slider" class="bg-[#1a1a2e] py-12 md:py-14">
+<section id="logo-slider" class="bg-[#000000] py-12 md:py-14">
   <div class="overflow-hidden relative px-4" style="height: 5.75rem; padding-top: 1.15rem; padding-bottom: 1.15rem;">
     <div class="marquee-track logo-slider-track" id="marquee-track">
 

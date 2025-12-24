@@ -33,6 +33,32 @@ class Client
     }
 
     /**
+     * Obtener los últimos N clientes activos
+     */
+    public function getLatest(int $limit = 3): array
+    {
+        $sql = "
+            SELECT 
+                id,
+                name,
+                slug,
+                logo,
+                short_description,
+                description,
+                created_at
+            FROM clients
+            WHERE is_active = 1
+            ORDER BY created_at DESC
+            LIMIT :limit
+        ";
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    /**
      * Buscar un cliente por su slug
      */
     public function findBySlug(string $slug): ?array

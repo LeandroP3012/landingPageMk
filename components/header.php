@@ -16,9 +16,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -36,7 +34,7 @@
       <!-- Navegación -->
       <nav class="nav">
         <a href="<?= BASE_URL ?>">Inicio</a>
-        <a href="<?= BASE_URL ?>/proyectos.php">Clientes</a>
+        <a href="<?= BASE_URL ?>/proyectos.php">Proyectos</a>
         <a href="<?= BASE_URL ?>/nosotros.php">Nosotros</a>
 
         <a href="#contacto" class="btn-nav">Contacto</a>
