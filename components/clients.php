@@ -12,26 +12,30 @@ $clients = $clientModel->all();
 
   <div class="clients-container">
 
-    <!-- Tabs de filtrado -->
-    <div class="clients-tabs">
-      <button class="tab-btn active" data-tab="ultimos">Últimos</button>
-      <button class="tab-btn" data-tab="servicios">Servicios</button>
-      <button class="tab-btn" data-tab="industrias">Industrias</button>
+    <!-- Header -->
+    <div class="clients-header">
+      <h2 class="clients-main-title">Todos los Proyectos</h2>
     </div>
 
-    <!-- Grid de proyectos -->
-    <div class="clients-grid" id="clients-grid">
-      <?php foreach ($clients as $client): ?>
-        <a href="<?= BASE_URL ?>/clientes/index.php?slug=<?= urlencode($client['slug']) ?>" class="client-card">
-          <div class="client-card-image">
-            <img src="<?= BASE_URL ?>/storage/uploads/clients/<?= htmlspecialchars($client['logo']) ?>" alt="<?= htmlspecialchars($client['name']) ?>">
-            <div class="client-card-overlay"></div>
-          </div>
-          <div class="client-card-info">
-            <h3><?= htmlspecialchars($client['name']) ?></h3>
-            <p><?= htmlspecialchars($client['short_description'] ?? 'Proyecto de Marca') ?></p>
-          </div>
-        </a>
+    <!-- Stacking Cards -->
+    <div class="stacking-cards-wrapper">
+      <?php foreach ($clients as $index => $client): ?>
+        <article class="client-card" data-card-index="<?= $index ?>">
+          <a href="<?= BASE_URL ?>/clientes/index.php?slug=<?= urlencode($client['slug']) ?>" class="card-link">
+            <div class="client-card-image">
+              <img src="<?= BASE_URL ?>/storage/uploads/clients/<?= htmlspecialchars($client['logo']) ?>" alt="<?= htmlspecialchars($client['name']) ?>">
+              <div class="client-card-overlay"></div>
+            </div>
+            <div class="client-card-info">
+              <span class="card-number"><?= str_pad($index + 1, 2, '0', STR_PAD_LEFT) ?></span>
+              <h3><?= htmlspecialchars($client['name']) ?></h3>
+              <p><?= htmlspecialchars($client['short_description'] ?? 'Proyecto de Marca') ?></p>
+              <div class="card-arrow">
+                <i class="fas fa-arrow-right"></i>
+              </div>
+            </div>
+          </a>
+        </article>
       <?php endforeach; ?>
     </div>
 
@@ -39,20 +43,336 @@ $clients = $clientModel->all();
 
 </section>
 
+<style>
+  /* Stacking Cards Effect */
+  .clients {
+    background: #000;
+    min-height: 300vh;
+    position: relative;
+    padding: 120px 0 100px;
+  }
+
+  .clients-container {
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  /* Header */
+  .clients-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    text-align: center;
+    padding: 40px 40px 80px;
+    background: linear-gradient(to bottom, #000 0%, #000 60%, transparent 100%);
+    margin-bottom: -40px;
+  }
+
+  .clients-main-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 80px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+    letter-spacing: -2px;
+    line-height: 1;
+    position: relative;
+    display: inline-block;
+    animation: titleReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+  }
+
+  @keyframes titleReveal {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+      filter: blur(10px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+
+  .clients-main-title::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #667eea, #764ba2, transparent);
+    animation: lineExpand 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+  }
+
+  @keyframes lineExpand {
+    0% {
+      width: 0;
+    }
+
+    100% {
+      width: 200px;
+    }
+  }
+
+  /* Stacking Cards */
+  .stacking-cards-wrapper {
+    position: relative;
+    padding: 0 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .client-card {
+    position: sticky;
+    top: 280px;
+    height: 65vh;
+    min-height: 500px;
+    margin-bottom: 40px;
+    will-change: transform, filter;
+    transition: transform 0.3s ease, filter 0.3s ease;
+  }
+
+  .client-card:last-child {
+    margin-bottom: 0;
+  }
+
+  .card-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .card-link:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 80px rgba(102, 126, 234, 0.3);
+  }
+
+  .client-card-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #111;
+  }
+
+  .client-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .card-link:hover .client-card-image img {
+    transform: scale(1.05);
+  }
+
+  .client-card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top,
+        rgba(0, 0, 0, 0.9) 0%,
+        rgba(0, 0, 0, 0.6) 40%,
+        rgba(0, 0, 0, 0.2) 70%,
+        transparent 100%);
+    opacity: 1;
+    transition: background 0.5s ease;
+  }
+
+  .card-link:hover .client-card-overlay {
+    background: linear-gradient(to top,
+        rgba(102, 126, 234, 0.95) 0%,
+        rgba(118, 75, 162, 0.85) 40%,
+        rgba(0, 0, 0, 0.4) 70%,
+        transparent 100%);
+  }
+
+  .client-card-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 50px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transform: translateY(0);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .card-link:hover .client-card-info {
+    transform: translateY(-8px);
+  }
+
+  .card-number {
+    font-size: 14px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 2px;
+  }
+
+  .client-card-info h3 {
+    color: #fff;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 42px;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: -1px;
+    line-height: 1.1;
+  }
+
+  .client-card-info p {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 18px;
+    margin: 0;
+    line-height: 1.6;
+    max-width: 600px;
+  }
+
+  .card-arrow {
+    width: 70px;
+    height: 70px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #667eea;
+    font-size: 24px;
+    opacity: 0;
+    transform: scale(0.8) translateY(10px);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .card-link:hover .card-arrow {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+
+  /* Responsive */
+  @media (max-width: 1200px) {
+    .clients-main-title {
+      font-size: 64px;
+    }
+
+    .client-card-info h3 {
+      font-size: 36px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .clients {
+      padding: 100px 0 60px;
+    }
+
+    .clients-header {
+      padding: 0 20px 60px;
+    }
+
+    .clients-main-title {
+      font-size: 42px;
+    }
+
+    .clients-main-title::after {
+      width: 150px;
+    }
+
+    .stacking-cards-wrapper {
+      padding: 20px 20px 0;
+    }
+
+    .client-card {
+      top: 160px;
+      height: 60vh;
+      min-height: 400px;
+      margin-bottom: 30px;
+    }
+
+    .card-link {
+      border-radius: 16px;
+    }
+
+    .client-card-info {
+      padding: 35px;
+    }
+
+    .client-card-info h3 {
+      font-size: 28px;
+    }
+
+    .client-card-info p {
+      font-size: 16px;
+    }
+
+    .card-arrow {
+      width: 60px;
+      height: 60px;
+      font-size: 20px;
+    }
+  }
+</style>
+
 <script>
-  // Funcionalidad de tabs (por ahora solo visual, sin filtrado real)
+  // Stacking cards animation
   ( function () {
-    const tabBtns = document.querySelectorAll( '.tab-btn' );
+    const cards = document.querySelectorAll( '.client-card' );
 
-    tabBtns.forEach( btn => {
-      btn.addEventListener( 'click', function () {
-        // Remover active de todos
-        tabBtns.forEach( b => b.classList.remove( 'active' ) );
-        // Agregar active al clickeado
-        this.classList.add( 'active' );
+    function updateStackingEffect() {
+      cards.forEach( ( card, index ) => {
+        const rect = card.getBoundingClientRect();
+        const cardTop = rect.top;
+        const threshold = 280; // Mismo que el top sticky
 
-        // Aquí se podría agregar lógica de filtrado real cuando se tengan las columnas en la BD
+        // Z-index invertido: las cartas que vienen después están ENCIMA
+        const baseZIndex = index + 1;
+
+        if ( cardTop <= threshold ) {
+          // Carta ya está en posición sticky o pasó
+          const scrolledPast = Math.max( 0, threshold - cardTop );
+
+          // Calcular escala y brillo
+          const scale = Math.max( 0.88, 1 - ( scrolledPast / 4000 ) );
+          const brightness = Math.max( 0.5, 1 - ( scrolledPast / 3000 ) );
+
+          // Aplicar transformaciones
+          card.style.transform = `scale(${scale})`;
+          card.style.filter = `brightness(${brightness})`;
+          card.style.zIndex = baseZIndex;
+        } else {
+          // Carta aún no llega a sticky
+          card.style.transform = 'scale(1)';
+          card.style.filter = 'brightness(1)';
+          card.style.zIndex = baseZIndex;
+        }
       } );
-    } );
+    }
+
+    // Optimizar scroll con requestAnimationFrame
+    let ticking = false;
+    window.addEventListener( 'scroll', () => {
+      if ( !ticking ) {
+        window.requestAnimationFrame( () => {
+          updateStackingEffect();
+          ticking = false;
+        } );
+        ticking = true;
+      }
+    }, { passive: true } );
+
+    // Inicializar
+    updateStackingEffect();
   } )();
 </script>
