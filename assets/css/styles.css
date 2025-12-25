@@ -906,7 +906,7 @@ body {
   font-size: 19px;
   line-height: 1.8;
   margin: 0;
-  color: #cccccc;
+  color: #ffffff;
 }
 
 .impact-highlight {
@@ -922,7 +922,7 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: #6fc9ee;
+  background: #d30808b6;
   border-radius: 4px;
   transform: scaleX(0);
   transform-origin: left center;
