@@ -49,3 +49,43 @@
 
     </div>
   </header>
+
+  <script>
+    // Efecto blur en navbar al hacer scroll
+    const header = document.querySelector( '.site-header' );
+    const heroSection = document.querySelector( '.hero-section' );
+
+    function handleHeaderScroll() {
+      const scrollPosition = window.scrollY;
+      
+      // Si existe la sección hero, usar el 80% de su altura
+      // Si no existe, activar después de 300px de scroll
+      let triggerPoint = 300;
+      
+      if ( heroSection ) {
+        const heroHeight = heroSection.offsetHeight;
+        triggerPoint = heroHeight * 0.8;
+        console.log('Hero height:', heroHeight, 'Trigger at:', triggerPoint, 'Current scroll:', scrollPosition);
+      }
+
+      // Agregar clase scrolled cuando se pase el punto de activación
+      if ( scrollPosition > triggerPoint ) {
+        header.classList.add( 'scrolled' );
+        console.log('SCROLLED CLASS ADDED');
+      } else {
+        header.classList.remove( 'scrolled' );
+        console.log('SCROLLED CLASS REMOVED');
+      }
+    }
+
+    // Ejecutar al cargar y al hacer scroll
+    window.addEventListener( 'scroll', handleHeaderScroll );
+    handleHeaderScroll();
+    
+    // Debug: Verificar si el header tiene la clase
+    setInterval(() => {
+      if(header.classList.contains('scrolled')) {
+        console.log('Header tiene clase scrolled');
+      }
+    }, 2000);
+  </script>
