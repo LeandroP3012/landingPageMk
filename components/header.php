@@ -37,7 +37,7 @@
         <a href="<?= BASE_URL ?>/proyectos.php">Proyectos</a>
         <a href="<?= BASE_URL ?>/nosotros.php">Nosotros</a>
 
-        <a href="#contacto" class="btn-nav">Contacto</a>
+        <a href="#contact-form" class="btn-nav">Contacto</a>
       </nav>
 
       <!-- Botón móvil -->
@@ -57,35 +57,62 @@
 
     function handleHeaderScroll() {
       const scrollPosition = window.scrollY;
-      
+
       // Si existe la sección hero, usar el 80% de su altura
       // Si no existe, activar después de 300px de scroll
       let triggerPoint = 300;
-      
+
       if ( heroSection ) {
         const heroHeight = heroSection.offsetHeight;
         triggerPoint = heroHeight * 0.8;
-        console.log('Hero height:', heroHeight, 'Trigger at:', triggerPoint, 'Current scroll:', scrollPosition);
+        console.log( 'Hero height:', heroHeight, 'Trigger at:', triggerPoint, 'Current scroll:', scrollPosition );
       }
 
       // Agregar clase scrolled cuando se pase el punto de activación
       if ( scrollPosition > triggerPoint ) {
         header.classList.add( 'scrolled' );
-        console.log('SCROLLED CLASS ADDED');
+        console.log( 'SCROLLED CLASS ADDED' );
       } else {
         header.classList.remove( 'scrolled' );
-        console.log('SCROLLED CLASS REMOVED');
+        console.log( 'SCROLLED CLASS REMOVED' );
       }
     }
 
     // Ejecutar al cargar y al hacer scroll
     window.addEventListener( 'scroll', handleHeaderScroll );
     handleHeaderScroll();
-    
+
     // Debug: Verificar si el header tiene la clase
-    setInterval(() => {
-      if(header.classList.contains('scrolled')) {
-        console.log('Header tiene clase scrolled');
+    setInterval( () => {
+      if ( header.classList.contains( 'scrolled' ) ) {
+        console.log( 'Header tiene clase scrolled' );
       }
-    }, 2000);
+    }, 2000 );
+
+    // Smooth scroll para enlaces de anclaje
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        
+        // Verificar que el href no sea solo '#'
+        if (href && href !== '#') {
+          e.preventDefault();
+          
+          const targetId = href.substring(1);
+          const targetElement = document.getElementById(targetId);
+          
+          if (targetElement) {
+            // Calcular posición con offset para el header
+            const headerHeight = header.offsetHeight;
+            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+            
+            // Scroll suave
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+          }
+        }
+      });
+    });
   </script>

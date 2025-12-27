@@ -1,4 +1,4 @@
-<section class="contact-section">
+<section id="contact-form" class="contact-section">
     <div class="contact-container">
 
         <div class="contact-text" data-animate="left">
