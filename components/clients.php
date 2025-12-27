@@ -291,7 +291,8 @@ $clients = $clientModel->all();
     }
 
     .clients-header {
-      padding: 0 20px 60px;
+      padding: 0 20px 20px;
+      margin-bottom: 30px;
     }
 
     .clients-main-title {
@@ -307,7 +308,7 @@ $clients = $clientModel->all();
     }
 
     .client-card {
-      top: 160px;
+      top: 0;
       height: 60vh;
       min-height: 400px;
       margin-bottom: 30px;
