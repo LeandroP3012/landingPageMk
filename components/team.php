@@ -18,7 +18,7 @@ $cover = $coverModel->get();
         <span class="category-top">Gestión</span>
         <span class="category-bottom">& Dirección</span>
       </div>
-      <h1 class="team-main-title">HUB (NOSOTROS)</h1>
+      <h1 class="team-main-title" data-split-by="letter">HUB (NOSOTROS)</h1>
     </div>
 
     <?php if ($cover && ($cover['image_top'] || $cover['image_bottom'])): ?>
@@ -72,3 +72,86 @@ $cover = $coverModel->get();
 
   </div>
 </section>
+
+<script>
+  // Slider interactivo de imágenes
+  ( function () {
+    const slider = document.getElementById( 'teamSlider' );
+    const coverTop = document.getElementById( 'coverTop' );
+    const divider = document.getElementById( 'coverDivider' );
+
+    if ( !slider || !coverTop || !divider ) return;
+
+    let isDragging = false;
+
+    const updateSlider = ( x ) => {
+      const rect = slider.getBoundingClientRect();
+      let percentage = ( ( x - rect.left ) / rect.width ) * 100;
+      percentage = Math.max( 0, Math.min( 100, percentage ) );
+
+      // Actualizar el ancho del contenedor de la imagen superior
+      // Esto controla cuánto de la imagen superior se ve
+      coverTop.style.width = percentage + '%';
+      divider.style.left = percentage + '%';
+    };
+
+    const onMove = ( e ) => {
+      if ( !isDragging ) return;
+      const x = e.type.includes( 'touch' ) ? e.touches[ 0 ].clientX : e.clientX;
+      updateSlider( x );
+    };
+
+    const startDrag = () => {
+      isDragging = true;
+      document.body.style.cursor = 'ew-resize';
+    };
+
+    const stopDrag = () => {
+      isDragging = false;
+      document.body.style.cursor = '';
+    };
+
+    // Eventos del divider
+    divider.addEventListener( 'mousedown', startDrag );
+    divider.addEventListener( 'touchstart', startDrag );
+
+    // Eventos del contenedor
+    slider.addEventListener( 'mousedown', ( e ) => {
+      startDrag();
+      updateSlider( e.clientX );
+    } );
+
+    slider.addEventListener( 'touchstart', ( e ) => {
+      startDrag();
+      updateSlider( e.touches[ 0 ].clientX );
+    } );
+
+    // Eventos globales
+    document.addEventListener( 'mousemove', onMove );
+    document.addEventListener( 'touchmove', onMove );
+    document.addEventListener( 'mouseup', stopDrag );
+    document.addEventListener( 'touchend', stopDrag );
+  } )();
+
+  // Animación de letras para el título
+  ( function () {
+    const { matches: motionOK } = window.matchMedia( '(prefers-reduced-motion: no-preference)' );
+
+    if ( !motionOK ) return;
+
+    const title = document.querySelector( '[data-split-by]' );
+    if ( !title ) return;
+
+    const text = title.textContent;
+    const letters = [ ...text ].map( ( char, index ) => {
+      const span = document.createElement( 'span' );
+      span.textContent = char;
+      span.style.setProperty( '--index', index );
+      span.className = 'letter-animate';
+      return span;
+    } );
+
+    title.textContent = '';
+    title.append( ...letters );
+  } )();
+</script>

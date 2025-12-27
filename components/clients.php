@@ -59,13 +59,10 @@ $clients = $clientModel->all();
 
   /* Header */
   .clients-header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    position: relative;
     text-align: center;
-    padding: 40px 40px 80px;
-    background: linear-gradient(to bottom, #000 0%, #000 60%, transparent 100%);
-    margin-bottom: -40px;
+    padding: 0 20px 0px;
+    margin-bottom: 60px;
   }
 
   .clients-main-title {
@@ -73,7 +70,7 @@ $clients = $clientModel->all();
     font-size: 80px;
     font-weight: 700;
     color: #ffffff;
-    margin: 0;
+    margin: 0 auto;
     letter-spacing: -2px;
     line-height: 1;
     position: relative;
@@ -122,22 +119,37 @@ $clients = $clientModel->all();
   .stacking-cards-wrapper {
     position: relative;
     padding: 0 40px;
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .client-card {
-    position: sticky;
-    top: 280px;
+    position: relative;
+    width: 100%;
+    max-width: 900px;
     height: 65vh;
     min-height: 500px;
-    margin-bottom: 40px;
-    will-change: transform, filter;
-    transition: transform 0.3s ease, filter 0.3s ease;
+    margin-bottom: 60px;
+    transform: translateX(400%);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+    opacity: 0;
   }
 
-  .client-card:last-child {
-    margin-bottom: 0;
+  .client-card:nth-of-type(even) {
+    transform: translateX(-400%);
+  }
+
+  .client-card.show {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  .client-card.show {
+    transform: translateX(0);
+    opacity: 1;
   }
 
   .card-link {
@@ -326,53 +338,25 @@ $clients = $clientModel->all();
 </style>
 
 <script>
-  // Stacking cards animation
+  // Animación de entrada lateral al hacer scroll
   ( function () {
     const cards = document.querySelectorAll( '.client-card' );
 
-    function updateStackingEffect() {
-      cards.forEach( ( card, index ) => {
-        const rect = card.getBoundingClientRect();
-        const cardTop = rect.top;
-        const threshold = 280; // Mismo que el top sticky
+    const checkCards = () => {
+      const triggerBottom = ( window.innerHeight / 5 ) * 4;
 
-        // Z-index invertido: las cartas que vienen después están ENCIMA
-        const baseZIndex = index + 1;
+      cards.forEach( ( card ) => {
+        const cardTop = card.getBoundingClientRect().top;
 
-        if ( cardTop <= threshold ) {
-          // Carta ya está en posición sticky o pasó
-          const scrolledPast = Math.max( 0, threshold - cardTop );
-
-          // Calcular escala y brillo
-          const scale = Math.max( 0.88, 1 - ( scrolledPast / 4000 ) );
-          const brightness = Math.max( 0.5, 1 - ( scrolledPast / 3000 ) );
-
-          // Aplicar transformaciones
-          card.style.transform = `scale(${scale})`;
-          card.style.filter = `brightness(${brightness})`;
-          card.style.zIndex = baseZIndex;
+        if ( cardTop < triggerBottom ) {
+          card.classList.add( 'show' );
         } else {
-          // Carta aún no llega a sticky
-          card.style.transform = 'scale(1)';
-          card.style.filter = 'brightness(1)';
-          card.style.zIndex = baseZIndex;
+          card.classList.remove( 'show' );
         }
       } );
-    }
+    };
 
-    // Optimizar scroll con requestAnimationFrame
-    let ticking = false;
-    window.addEventListener( 'scroll', () => {
-      if ( !ticking ) {
-        window.requestAnimationFrame( () => {
-          updateStackingEffect();
-          ticking = false;
-        } );
-        ticking = true;
-      }
-    }, { passive: true } );
-
-    // Inicializar
-    updateStackingEffect();
+    checkCards();
+    window.addEventListener( 'scroll', checkCards );
   } )();
 </script>
