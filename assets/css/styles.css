@@ -1063,3 +1063,137 @@ body {
     font-size: 18px;
   }
 }
+
+/* ===============================
+   CONTACT FORM
+================================ */
+.contact-section {
+  background: #fff;
+  color: #000;
+  padding: 120px 20px;
+}
+
+.contact-container {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+/* Texto */
+.contact-label {
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: 600;
+  color: #777;
+}
+
+.contact-text h2 {
+  font-size: 42px;
+  line-height: 1.2;
+  margin: 15px 0;
+}
+
+.contact-text p {
+  color: #555;
+  max-width: 420px;
+}
+
+/* Form */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+.field {
+  position: relative;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 14px 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #000;
+  color: #000;
+  font-size: 15px;
+  outline: none;
+}
+
+.field label {
+  position: absolute;
+  left: 0;
+  top: 14px;
+  font-size: 14px;
+  color: #777;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+/* Floating label */
+.field input:focus+label,
+.field input:valid+label,
+.field textarea:focus+label,
+.field textarea:valid+label {
+  top: -10px;
+  font-size: 11px;
+  color: #000;
+}
+
+/* Button */
+.contact-form button {
+  align-self: flex-start;
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 14px 40px;
+  font-size: 14px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.contact-form button:hover {
+  transform: translateY(-2px);
+}
+
+.contact-form button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+  z-index: 0;
+}
+
+.contact-form button:hover::after {
+  transform: scaleX(1);
+}
+
+.contact-form button span {
+  position: relative;
+  z-index: 1;
+}
+
+.contact-form button:hover span {
+  color: #000;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .contact-container {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .contact-text h2 {
+    font-size: 34px;
+  }
+}

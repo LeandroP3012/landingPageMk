@@ -14,5 +14,5 @@ require_once __DIR__ . '/app/config/app.php';
 <?php include 'components/impact.php'; ?>
 <?php include 'components/marquee.php'; ?>
 <?php include 'components/recent-projects.php'; ?>
+<?php include 'components/contact-form.php'; ?>
 <?php include 'components/footer.php'; ?>
-

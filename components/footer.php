@@ -3,7 +3,8 @@
     <h2 class="footer-title">
       <span id="typewriter-text"></span><span class="cursor-blink">.</span>
     </h2>
-    <a href="https://wa.me/51946689126?text=Hola,%20me%20gustar%C3%ADa%20solicitar%20un%20diagn%C3%B3stico" target="_blank" class="footer-btn">
+    <a href="https://wa.me/51946689126?text=Hola,%20me%20gustar%C3%ADa%20solicitar%20un%20diagn%C3%B3stico"
+      target="_blank" class="footer-btn">
       Solicita un diagnóstico
     </a>
     <div class="footer-social">
@@ -20,24 +21,24 @@
 <script src="/landingPageMk/assets/js/main.js"></script>
 <script>
   // Animación de escritura letra por letra en el footer
-  document.addEventListener( 'DOMContentLoaded', function () {
+  document.addEventListener('DOMContentLoaded', function () {
     const footerText = "Aceleramos ventas con\ncreatividad y data";
-    const typewriterElement = document.getElementById( 'typewriter-text' );
+    const typewriterElement = document.getElementById('typewriter-text');
     let hasAnimated = false;
 
-    function typeWriter( text, element, speed = 50 ) {
+    function typeWriter(text, element, speed = 50) {
       let i = 0;
       element.innerHTML = '';
 
       function type() {
-        if ( i < text.length ) {
-          if ( text.charAt( i ) === '\n' ) {
+        if (i < text.length) {
+          if (text.charAt(i) === '\n') {
             element.innerHTML += '<br>';
           } else {
-            element.innerHTML += text.charAt( i );
+            element.innerHTML += text.charAt(i);
           }
           i++;
-          setTimeout( type, speed );
+          setTimeout(type, speed);
         }
       }
 
@@ -45,25 +46,25 @@
     }
 
     // Intersection Observer para detectar cuando el footer es visible
-    const footerObserver = new IntersectionObserver( ( entries ) => {
-      entries.forEach( entry => {
-        if ( entry.isIntersecting && !hasAnimated ) {
+    const footerObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !hasAnimated) {
           hasAnimated = true;
-          setTimeout( () => {
-            typeWriter( footerText, typewriterElement, 80 );
-          }, 200 );
+          setTimeout(() => {
+            typeWriter(footerText, typewriterElement, 80);
+          }, 200);
         }
-      } );
+      });
     }, {
       threshold: 0.5,
       rootMargin: '-100px 0px -100px 0px'
-    } );
+    });
 
-    const footer = document.querySelector( '.site-footer' );
-    if ( footer ) {
-      footerObserver.observe( footer );
+    const footer = document.querySelector('.site-footer');
+    if (footer) {
+      footerObserver.observe(footer);
     }
-  } );
+  });
 </script>
 </body>
 
