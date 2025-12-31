@@ -96,6 +96,61 @@
                     <span class="metric-badge">Pop-ups</span>
                 </div>
             </div>
+
+            <!-- Desarrollo Web -->
+            <div class="service-card" data-service="webdev">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M8 21h8M12 17v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M7 8l3 3-3 3M13 14h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <h3 class="service-title">Desarrollo Web</h3>
+                <p class="service-description">
+                    Diseño y desarrollo de sitios web modernos, landing pages de alto impacto, e-commerce, aplicaciones
+                    web progresivas (PWA) y plataformas personalizadas con tecnologías de vanguardia, optimizadas para
+                    SEO y conversión.
+                </p>
+                <div class="service-metrics">
+                    <span class="metric-badge">Php</span>
+                    <span class="metric-badge">Node.js</span>
+                    <span class="metric-badge">Java Script</span>
+                    <span class="metric-badge">E-commerce</span>
+                    <span class="metric-badge">Sql</span>
+                    <span class="metric-badge">Sql Server </span>
+                </div>
+            </div>
+
+            <!-- Desarrollo de Escritorio -->
+            <div class="service-card" data-service="desktop">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="4" y="2" width="16" height="16" rx="2" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M9 22h6M12 18v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M8 6h8M8 10h8M8 14h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <h3 class="service-title">Aplicaciones de Escritorio</h3>
+                <p class="service-description">
+                    Desarrollo de software de escritorio multiplataforma (Windows, macOS, Linux) para gestión
+                    empresarial, automatización de procesos, sistemas POS, inventarios y soluciones personalizadas que
+                    optimizan la productividad.
+                </p>
+                <div class="service-metrics">
+                    <span class="metric-badge">Tkinder</span>
+                    <span class="metric-badge">Python</span>
+                    <span class="metric-badge">Java</span>
+                    <span class="metric-badge">Postgres</span>
+                    <span class="metric-badge">Mysql</span>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -103,7 +158,7 @@
 <style>
     .services-section {
         padding: 100px 20px;
-        background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
+        background: linear-gradient(135deg, #0a0a1e 0%, #1a0a2e 50%, #0f1a2e 100%);
         position: relative;
         overflow: hidden;
     }
@@ -116,9 +171,23 @@
         right: 0;
         bottom: 0;
         background:
-            radial-gradient(circle at 20% 30%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
-            radial-gradient(circle at 80% 70%, rgba(0, 191, 255, 0.1) 0%, transparent 50%);
+            radial-gradient(circle at 20% 30%, rgba(147, 51, 234, 0.15) 0%, transparent 50%),
+            radial-gradient(circle at 80% 70%, rgba(6, 182, 212, 0.15) 0%, transparent 50%),
+            radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.1) 0%, transparent 60%);
         pointer-events: none;
+        animation: gradientShift 15s ease infinite;
+    }
+
+    @keyframes gradientShift {
+
+        0%,
+        100% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0.7;
+        }
     }
 
     .services-container {
@@ -138,12 +207,26 @@
     .services-title {
         font-size: 3.5rem;
         font-weight: 800;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(135deg, #a855f7 0%, #ec4899 50%, #06b6d4 100%);
+        background-size: 200% 200%;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
         margin-bottom: 20px;
         letter-spacing: -1px;
+        animation: gradientFlow 8s ease infinite;
+    }
+
+    @keyframes gradientFlow {
+
+        0%,
+        100% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
     }
 
     .services-subtitle {
@@ -162,11 +245,11 @@
 
     .service-card {
         background: rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(10px);
-        border-radius: 20px;
+        backdrop-filter: blur(15px);
+        border-radius: 24px;
         padding: 40px 30px;
         border: 1px solid rgba(255, 255, 255, 0.1);
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
         overflow: hidden;
         opacity: 0;
@@ -180,19 +263,47 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: linear-gradient(135deg, rgba(138, 43, 226, 0.1) 0%, rgba(0, 191, 255, 0.1) 100%);
+        background: linear-gradient(135deg, rgba(168, 85, 247, 0.15) 0%, rgba(236, 72, 153, 0.15) 100%);
         opacity: 0;
-        transition: opacity 0.4s ease;
+        transition: opacity 0.5s ease;
+    }
+
+    .service-card::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(168, 85, 247, 0.1) 0%, transparent 70%);
+        opacity: 0;
+        transition: opacity 0.5s ease;
     }
 
     .service-card:hover {
-        transform: translateY(-10px);
-        border-color: rgba(138, 43, 226, 0.5);
-        box-shadow: 0 20px 60px rgba(138, 43, 226, 0.3);
+        transform: translateY(-15px) scale(1.02);
+        border-color: rgba(168, 85, 247, 0.6);
+        box-shadow: 0 25px 70px rgba(168, 85, 247, 0.4),
+            0 10px 30px rgba(236, 72, 153, 0.3);
     }
 
     .service-card:hover::before {
         opacity: 1;
+    }
+
+    .service-card:hover::after {
+        opacity: 1;
+        animation: rotate 20s linear infinite;
+    }
+
+    @keyframes rotate {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
     }
 
     .service-card[data-service="growth"] {
@@ -211,22 +322,35 @@
         animation: slideInLeft 0.8s ease forwards 0.8s;
     }
 
+    .service-card[data-service="webdev"] {
+        animation: slideInLeft 0.8s ease forwards 1s;
+    }
+
+    .service-card[data-service="desktop"] {
+        animation: slideInLeft 0.8s ease forwards 1.2s;
+    }
+
     .service-icon {
         width: 70px;
         height: 70px;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        border-radius: 15px;
+        background: linear-gradient(135deg, #a855f7 0%, #ec4899 50%, #f97316 100%);
+        background-size: 200% 200%;
+        border-radius: 18px;
         display: flex;
         align-items: center;
         justify-content: center;
         margin-bottom: 25px;
         position: relative;
         z-index: 1;
-        transition: transform 0.4s ease;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 8px 20px rgba(168, 85, 247, 0.3);
     }
 
     .service-card:hover .service-icon {
-        transform: scale(1.1) rotate(5deg);
+        transform: scale(1.15) rotate(8deg);
+        background-position: 100% 50%;
+        box-shadow: 0 12px 30px rgba(168, 85, 247, 0.5),
+            0 6px 15px rgba(236, 72, 153, 0.4);
     }
 
     .service-icon svg {
@@ -263,18 +387,36 @@
 
     .metric-badge {
         padding: 8px 16px;
-        background: rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.08);
         border: 1px solid rgba(255, 255, 255, 0.2);
         border-radius: 20px;
         font-size: 0.85rem;
         color: rgba(255, 255, 255, 0.9);
-        transition: all 0.3s ease;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .metric-badge::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.3), transparent);
+        transition: left 0.5s ease;
     }
 
     .service-card:hover .metric-badge {
-        background: rgba(138, 43, 226, 0.3);
-        border-color: rgba(138, 43, 226, 0.5);
-        transform: translateY(-2px);
+        background: rgba(168, 85, 247, 0.25);
+        border-color: rgba(168, 85, 247, 0.6);
+        transform: translateY(-3px);
+        box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);
+    }
+
+    .service-card:hover .metric-badge::before {
+        left: 100%;
     }
 
     /* Animations */
