@@ -61,7 +61,7 @@ $recentClients = $clientModel->getLatest(3);
 
   .recent-projects {
     position: relative;
-    background: #000000ff;
+    background: linear-gradient(135deg, #0a0a1e 0%, #1a0a2e 50%, #0f1a2e 100%);
     min-height: 100vh;
     display: flex;
     flex-direction: column;

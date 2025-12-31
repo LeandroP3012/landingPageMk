@@ -80,6 +80,7 @@ if ( impactSection ) {
   observer.observe( impactSection );
 }
 
+// Animación reveal-on-scroll (necesaria para impact y otros elementos)
 if ( revealElements.length ) {
   const revealObserver = new IntersectionObserver( ( entries, obs ) => {
     entries.forEach( ( entry ) => {
@@ -93,7 +94,9 @@ if ( revealElements.length ) {
   revealElements.forEach( ( element ) => revealObserver.observe( element ) );
 }
 
-if ( transitionOverlay && observedSections.length ) {
+
+// ANIMACIÓN DE TRANSICIÓN ENTRE SECCIONES DESACTIVADA
+/* if ( transitionOverlay && observedSections.length ) {
   let transitionTimeout;
 
   const applyTransition = ( section ) => {
@@ -127,41 +130,40 @@ if ( transitionOverlay && observedSections.length ) {
   }, { threshold: 0.55 } );
 
   observedSections.forEach( ( section ) => sectionObserver.observe( section ) );
-  /* ===============================
-   CONTACT FORM BACKEND
+} */
+/* ===============================
+ CONTACT FORM BACKEND
 ================================ */
-  const contactForm = document.getElementById( 'contactForm' );
-  const formStatus = document.getElementById( 'formStatus' );
+const contactForm = document.getElementById( 'contactForm' );
+const formStatus = document.getElementById( 'formStatus' );
 
-  if ( contactForm ) {
-    const endpoint = contactForm.dataset.endpoint;
+if ( contactForm ) {
+  const endpoint = contactForm.dataset.endpoint;
 
-    contactForm.addEventListener( 'submit', async ( e ) => {
-      e.preventDefault();
+  contactForm.addEventListener( 'submit', async ( e ) => {
+    e.preventDefault();
 
-      formStatus.textContent = 'Enviando...';
+    formStatus.textContent = 'Enviando...';
 
-      const formData = new FormData( contactForm );
+    const formData = new FormData( contactForm );
 
-      try {
-        const response = await fetch( endpoint, {
-          method: 'POST',
-          body: formData
-        } );
+    try {
+      const response = await fetch( endpoint, {
+        method: 'POST',
+        body: formData
+      } );
 
-        const result = await response.text();
+      const result = await response.text();
 
-        if ( result.trim() === 'OK' ) {
-          formStatus.textContent = 'Mensaje enviado correctamente ✔';
-          contactForm.reset();
-        } else {
-          throw new Error( result );
-        }
-      } catch ( err ) {
-        formStatus.textContent = 'Error al enviar el mensaje';
-        console.error( err );
+      if ( result.trim() === 'OK' ) {
+        formStatus.textContent = 'Mensaje enviado correctamente ✔';
+        contactForm.reset();
+      } else {
+        throw new Error( result );
       }
-    } );
-  }
-
+    } catch ( err ) {
+      formStatus.textContent = 'Error al enviar el mensaje';
+      console.error( err );
+    }
+  } );
 }

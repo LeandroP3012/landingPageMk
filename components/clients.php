@@ -46,14 +46,15 @@ $clients = $clientModel->all();
 <style>
   /* Stacking Cards Effect */
   .clients {
-    background: #000;
+    background: linear-gradient(135deg, #0a0a1e 0%, #1a0a2e 50%, #0f1a2e 100%);
     min-height: 300vh;
     position: relative;
     padding: 120px 0 100px;
+    overflow: hidden;
   }
 
   .clients-container {
-    max-width: 1200px;
+    max-width: 1800px;
     margin: auto;
   }
 
@@ -119,7 +120,7 @@ $clients = $clientModel->all();
   .stacking-cards-wrapper {
     position: relative;
     padding: 0 40px;
-    max-width: 1000px;
+    max-width: 2000px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -129,7 +130,7 @@ $clients = $clientModel->all();
   .client-card {
     position: relative;
     width: 100%;
-    max-width: 900px;
+    max-width: 1100px;
     height: 65vh;
     min-height: 500px;
     margin-bottom: 60px;
