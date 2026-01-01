@@ -26,6 +26,7 @@ $galleryModel = new ClientGallery($pdo);
 $gallery = $galleryModel->getByClient($client['id']);
 ?>
 <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/client.css">
+<link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/styles.css">
 
 <section class="client-page">
 
@@ -64,7 +65,7 @@ $gallery = $galleryModel->getByClient($client['id']);
     </div>
 </section>
 
-
+<?php include ROOT_PATH . '/components/contact-form.php'; ?>
 
 <?php include ROOT_PATH . '/components/footer.php'; ?>
 <script src="<?= BASE_URL ?>/assets/js/client.js" defer></script>
