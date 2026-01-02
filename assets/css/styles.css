@@ -1459,14 +1459,25 @@ body {
   margin: 32px auto 0;
   padding: 28px 32px;
   border-radius: 16px;
-  background: #ffffff;
-  box-shadow: 0 12px 40px -20px rgba(0, 0, 0, 0.25);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 12px 40px -20px rgba(0, 0, 0, 0.4);
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 24px;
   align-items: center;
   text-align: left;
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: pointer;
+}
+
+.impact-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 60px -10px rgba(0, 240, 255, 0.3),
+    0 0 0 2px rgba(0, 240, 255, 0.2);
+  border-color: rgba(0, 240, 255, 0.3);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .impact-badge {
@@ -1478,20 +1489,30 @@ body {
 .impact-badge img {
   width: 90px;
   height: auto;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.impact-card:hover .impact-badge img {
+  transform: rotate(5deg) scale(1.1);
 }
 
 .impact-card-copy h3 {
   font-size: 20px;
   font-weight: 600;
   margin: 0 0 6px;
-  color: #1a1a1a;
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+.impact-card:hover .impact-card-copy h3 {
+  color: #00f0ff;
 }
 
 .impact-card-copy p {
   font-size: 15px;
   line-height: 1.65;
   margin: 0;
-  color: #555555;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 
