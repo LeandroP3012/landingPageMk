@@ -342,12 +342,10 @@ body {
 
 /* ================= FOOTER ================= */
 .site-footer {
-  background: linear-gradient(135deg, #0a0a1e 0%, #1a0a2e 50%, #0f1a2e 100%);
+  background: #000000;
   color: #ffffff;
   padding: 80px 40px;
   text-align: center;
-  position: relative;
-  overflow: hidden;
 }
 
 .footer-container {
@@ -775,7 +773,7 @@ body {
 /* ================= MARQUEE ================= */
 
 .marquee-section {
-  background: linear-gradient(135deg, #0a0a1e 0%, #1a0a2e 50%, #0f1a2e 100%);
+  background: #0a0a0a;
   padding: 24px 0;
   overflow: hidden;
 }
@@ -825,7 +823,7 @@ body {
 
 .team {
   padding: 120px 40px;
-  background: linear-gradient(135deg, #0a0a1e 0%, #1a0a2e 50%, #0f1a2e 100%);
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
   min-height: 100vh;
   position: relative;
   overflow: hidden;
@@ -1374,11 +1372,9 @@ body {
 /* ================= IMPACT SECTION ================= */
 
 .impact-section {
-  background: linear-gradient(135deg, #0a0a1e 0%, #1a0a2e 50%, #0f1a2e 100%);
+  background: #000000;
   color: #ffffff;
   padding: 120px 20px;
-  position: relative;
-  overflow: hidden;
 }
 
 .impact-container {
@@ -1494,7 +1490,6 @@ body {
   color: #555555;
 }
 
-
 .reveal-on-scroll {
   opacity: 0;
   transform: translateY(24px);
@@ -1565,7 +1560,7 @@ body {
    CONTACT FORM
 ================================ */
 .contact-section {
-  background: linear-gradient(135deg, #0a0a1e 0%, #1a0a2e 50%, #0f1a2e 100%);
+  background: linear-gradient(135deg, #0a0a0a 0%, #000000 100%);
   color: #ffffff;
   padding: 120px 20px;
   position: relative;
