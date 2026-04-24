@@ -1,0 +1,10 @@
+Options -Indexes
+
+RewriteEngine On
+
+# Redirigir sitemap.xml al sitemap dinámico PHP
+RewriteRule ^sitemap\.xml$ sitemap.php [L,QSA]
+
+# Forzar HTTPS en producción (descomentar al subir al hosting)
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
